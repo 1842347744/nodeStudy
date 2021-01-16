@@ -1,4 +1,4 @@
-var http = require('http');
+var http = require('http'); // www
 var fs = require('fs');
 var server = http.createServer();
 server.listen(5000, function () {
