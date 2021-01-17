@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浏览器中使用模板引擎</title>
+</head>
+<body>
+    <script src="./node_modules/art-template/lib/template-web.js"></script>
+    <script type="text/html" id = 'tem'>
+        hh{{name}}，
+        xx{{age}}
+    </script>
+    <script>
+        var exa = template('tem', {
+            name: 'ywc',
+            age:23
+        })
+        console.log(exa);
+    </script>
+</body>
+
+</html>
