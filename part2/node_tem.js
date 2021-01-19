@@ -15,7 +15,7 @@ var  thehtml = `
 </head>
 <body>
     <h2> 我叫 {{ name }} </h2>
-    练习时长 {{ age }} 年, 
+    <p> 练习时长 {{ age }} 年</p>, 
     爱好 {{ each hobbies }} {{ $value }} {{/each}}
 </body>
 </html>`
@@ -28,19 +28,32 @@ var str = template.render(thehtml, {
         'rap'
     ]
 })
+
 server.listen(5000, () => {
     console.log('服务器启动了,可以通过http://127.0.0.1:5000来访问');
 })
-server.on('request', (req, res) =>{
+server.on('request', (req, res) => {
     if (req.url === '/') {
-        res.setHeader('Content-type', 'text/html; charset=utf-8');
-        res.end(str);
-        // fs.writeFile('home.html', str, (err, data) => {
-        //     if (err) {
-        //         console.log('写文件失败');
-        //     } else {
-        //         res.end()
-        //     }
-        // })
+        // res.setHeader('Content-type', 'text/html; charset=utf-8');
+        // res.end(str);
+        fs.readFile('index.html', (err, data) => {
+            if (err) {
+                console.log('写文件失败');
+            } else {
+                var htmldata = template.render(data.toString(), {
+                    title: '主页',
+                    name: 'yyyy',
+                    age: '24'
+                }, function (success, error) {
+                    if (success) {
+                        console.log('渲染成功');
+                    } else {
+                        console.log('渲染失败');
+                    }
+                })
+                res.setHeader('Content-type', 'text/html; charset=utf-8');
+                res.end(htmldata);
+            }
+        })
     }
 })
