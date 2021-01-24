@@ -4,9 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .list_comment{
+            border: 1px solid rgb(211, 211, 211);
+        }
+        .list_comment li {
+            width: 100%;
+            height: 30;
+            line-height: 30px;
+            list-style: none;  
+        }
+        .li_left {
+            display: inline-block;
+            box-sizing: border-box;
+            /* text-align: center; */
+            padding-left: 10px;
+            width: 5%;
+        }
+        .li_right {
+            display: inline-block;
+            box-sizing: border-box;
+            /* text-align: center; */
+            width: 90%;
+        }
+    </style>
 </head>
 <body>
-    我叫 {{ name }},
-    今年 {{ age }}
+    <header style="text-align: center;">
+        <img src="/public/img/onepeace.jpg" alt=""> 
+    </header>
+    <main> 
+        <!-- 我叫 {{ name }},
+        今年 {{ age }} -->
+
+        <ul class="list_comment">
+            <h2 style="padding: 10px;">
+                评论
+            </h2>
+            <!-- <hr></hr> -->
+            {{ each comments}}
+            <li>
+                <span class="li_left"> {{ $value.name }}: </span><span class="li_right">{{ $value .comment }} </span> 
+            </li>
+            {{ /each }}
+        </ul>
+    </main>
+    <footer></footer>
 </body>
 </html>
