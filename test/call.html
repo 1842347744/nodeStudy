@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    name = "张三";
+    age = 18;
+    function test(){
+        document.writeln(this);
+        document.writeln(this.name);
+        document.writeln(this.age);
+        document.writeln(this.from);
+    };
+    obj = { from: '浙江' }
+    test.call(obj, [1, 2]);
+</script>
+</html>
