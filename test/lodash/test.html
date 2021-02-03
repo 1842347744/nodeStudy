@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="../node_modules/lodash/lodash.js"></script>
+<script>
+    // var arr = [ 1 , 2, 3, 4 ];
+    // var testarr = _.chunk(arr, [size = 3]);
+    // console.log(testarr);
+
+    // var abc = function(a, b, c) {
+    //     return [a, b, c];
+    // };
+    // console.log(abc.length);
+    // var curried = _.curry(abc, 3);
+   
+    // // console.log(curried(1,787)(2)); 
+    // // => [1, 2, 3]
+    
+    // curried(1, 2)(3);
+    // console.log(curried(1, 2, 3, 4));
+    // // => [1, 2, 3]
+    
+    // curried(1, 2, 3);
+    // => [1, 2, 3]
+    
+    // Curried with placeholders.
+    // console.log(curried(1)('z')('hh'));
+    // => [1, 2, 3]
+
+    var persons = [{name: 'kevin', age: 11}, {name: 'daisy', age: 24}]
+    let getProp = _.curry(function (key, obj) {
+        return obj[key]
+    });
+
+    console.log(getProp);
+    let names2 = persons.map(getProp('name'))
+    console.log(names2); //['kevin', 'daisy']
+
+    let ages2 = persons.map(getProp('age'))
+    console.log(ages2); //[11,24]
+
+</script>
+</html>
